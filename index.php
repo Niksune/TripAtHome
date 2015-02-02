@@ -4,18 +4,18 @@
 
 <head>
 	<title>Index</title>
-	<style type="text/css">
-    </style>
 	
-	<script type="text/javascript">
-		function main() {
 
-			
-		}
-	</script>
+
 </head>
+
 <body onload="main();">
 
+	<div id="content">
+		<span id="BrokenDreams">Broken Dreams : <span id="nbBD">0</span></span>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="main.js"></script>
 </body>
 
 </html>
