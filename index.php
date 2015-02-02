@@ -18,8 +18,10 @@
 	</div>
 	<div id="actions">
 		<span id="BDBoostSpan" style="display:none;" ><button id="BDBoostBut" onclick="BDBoost()">Boost Broken Dreams Production</button> (cost : <span id="BDBoostPrice">0</span> Broken Dreams)</span><br/>
-		<span id="buyHopeSpan" style="display:none;" ><button id="buyHopeBut" onclick="buyHope()">Buy a Hope</button> (cost : <span id="buyHopePrice">0</span> Broken Dreams)</span>
-		
+		<span id="buyHopeSpan" style="display:none;" ><button id="buyHopeBut" onclick="buyHope()">Buy a Hope</button> (cost : <span id="buyHopePrice">0</span> Broken Dreams)</span><br/>
+		<span id="buyRequestSpan" style="display:none;" ><button id="buyRequest" onclick="buyRequest()">Buy a Request</button> (cost : <span id="buyRequestPrice">0</span> Broken Dreams)</span>
+	</div>
+	<div id="imageBoard" style="display:none;">
 	</div>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="main.js"></script>
