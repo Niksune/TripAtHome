@@ -1,6 +1,15 @@
 <?php
 
-$xml = simplexml_load_file('https://e621.net/post/index.xml?limit=1');
-echo($xml->post["file_url"][0]);
+	//FIchier appelé par la fonction JS faisant les requètes.
+	//Se doit de retourner l'url d'une image
+
+	include('fonctions.php');
+
+	//Preparer la requete 
+	$criterias = ["sonic_the_hedgehog", "rating:s", "solo"];
+	
+	$request = requestCreator($criterias);
+	
+	echo(getImageURL($request));
 
 ?>

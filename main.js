@@ -1,5 +1,5 @@
 //Global Variables
-var brokenDreams = 0;
+var brokenDreams = 45;
 var hopes = 0;
 var incrementationBD = 1;
 var incrementationHopes = 0;
