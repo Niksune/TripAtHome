@@ -1,11 +1,10 @@
 <?php
 
 	include('fonctions.php');
-	include('fonctions_requeteur.php');
 
 	/* A DEFINIR A LA MAIN */
 	//Elements de requete
-	$character = "twilight_sparkle_(mlp)";
+	$character = "knuckles_the_echidna";
 	$quality = "score:%3E20"; //%3E20 = >20. Le deux points est necessaire à la compréhension de la requète
 	$arrayOfCriterias = [
 						[$character, "rating:s", "solo", $quality],
