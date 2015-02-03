@@ -27,7 +27,6 @@
 			fputs($file, ' + '.$value);
 		}
 		$request = requestCreator($criterias);
-		echo "$request  ";
 		$retourChariot = '
 ';
 		$url = makeURL($criterias);
