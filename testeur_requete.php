@@ -9,6 +9,8 @@
 	
 	echo $request;
 	
+	echo howMany($request);
 	
+	echo "fini";
 	
 ?>

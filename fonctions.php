@@ -27,4 +27,14 @@
 		return($xml->post["file_url"][0]);
 	
 	}
+	
+	//Renvoie le nombre de réponses correspondant à la recherche
+	//Entrée : string requète
+	//Sortie : nombre
+	function howMany($request){
+	
+		$xml = simplexml_load_file($request);
+		
+		return($xml["count"]);
+	}
 ?>
