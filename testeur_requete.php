@@ -3,14 +3,16 @@
 	include('fonctions.php');
 	include('fonctions_requeteur.php');
 
-	
 	/* A DEFINIR A LA MAIN */
-	$character = "Sonic_The_Hedgehog";
+	//Elements de requete
+	$character = "twilight_sparkle_(mlp)";
+	$quality = "score:%3E20"; //%3E20 = >20. Le deux points est necessaire à la compréhension de la requète
 	$arrayOfCriterias = [
-						[$character, "rating:s", "solo"],
-						[$character, "rating:s", "clothing", "solo"],
-						[$character, "rating:s", "nude", "solo"],
-						[$character, "rating:e", "nude", "-sex", "solo"]
+						[$character, "rating:s", "solo", $quality],
+						[$character, "rating:s", "clothing", "solo", $quality],
+						[$character, "-rating:s", "nude", "-sex", "solo", $quality],
+						[$character, "-rating:s", "sex", "duo", "fellatio", $quality],
+						[$character, "-rating:s", "sex", "duo", "oral", $quality]
 						];
 	
 	$file = fopen('Personnages\\'.$character.'.txt', 'w+'); 
@@ -26,21 +28,13 @@
 			fputs($file, ' + '.$value);
 		}
 		$request = requestCreator($criterias);
+		echo "$request  ";
 		$retourChariot = '
 ';
 		$url = makeURL($criterias);
+
 		fputs($file,' : '.howMany($request).'    '.$url.$retourChariot);
 	}
-	echo "fini";
-	/*//Preparer la requete 
-	$criterias = ["sonic_the_hedgehog", "rating:s", "solo"];
-	
-	$request = requestCreator($criterias);
-	
-	echo $request;
-	
-	echo howMany($request);
-	
-	echo "fini";*/
+	echo "Fini !";
 	
 ?>
