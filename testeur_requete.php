@@ -1,6 +1,7 @@
 <?php
 
 	include('fonctions.php');
+	include('fonctions_requeteur.php');
 
 	
 	/* A DEFINIR A LA MAIN */
@@ -27,7 +28,8 @@
 		$request = requestCreator($criterias);
 		$retourChariot = '
 ';
-		fputs($file,' : '.howMany($request).''.$retourChariot);
+		$url = makeURL($criterias);
+		fputs($file,' : '.howMany($request).'    '.$url.$retourChariot);
 	}
 	echo "fini";
 	/*//Preparer la requete 
