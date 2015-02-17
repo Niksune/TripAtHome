@@ -1,3 +1,6 @@
+//Game ( "Harem" or "TripAtHome" )
+var game = "TripAtHome";
+
 //Global Variables
 var brokenDreams = 45;
 var hopes = 0;
@@ -88,7 +91,7 @@ function buyRequest () {
 	if(brokenDreams<buyRequestPrice)
 		cantPay();
 	else{
-		image = getData('','requeteur.php');
+		image = getData('',game+"/requeteur.php");
 		chaine = 
 		$('#imageBoard').html("<img src='"+image+"'/>");
 		$('#Messages').html("Have fun, you well deserved it... ");
