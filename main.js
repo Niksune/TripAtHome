@@ -1,50 +1,82 @@
 //Game ( "Harem" or "TripAtHome" )
 var game = "TripAtHome";
 
-//Global Variables
-var brokenDreams = 45;
-var hopes = 0;
-var incrementationBD = 1;
-var incrementationHopes = 0;
-var BDBoostPrice = 5;
-var buyHopePrice = 10;
+//Character stats
+var endurance = 20;
+var wisdom = 10;
+var dexterity = 10;
+
+// Ressources
+var vegetables = 45;
+var golds = 0;
+var pearls = 0;
+
+//Ressource incrementation
+var incrementationVegetable = 1;
+var incrementationGold = 0;
+var incrementationPearl = 0;
+
+//Item's prices
+var vegetableBoostPrice = 5;
+var buyGoldPrice = 10;
 var buyRequestPrice = 15;
+var littleMinePrice = 5;
+var mediumMinePrice = 30;
+var largeMinePrice = 50;
+
+//Mine's prices
+var minePrices = new Array();
+minePrices['little'] = new Array(5,0,0);
+minePrices['medium'] = new Array(30,0,0);
+minePrices['large'] = new Array(50,0,0);
 
 //Summon main features
 //Print prices
 function main () {
 
-	$('#BDBoostPrice').html(BDBoostPrice);
-	$('#buyHopePrice').html(buyHopePrice);
+	$('#vegetableBoostPrice').html(vegetableBoostPrice);
+	$('#buyGoldPrice').html(buyGoldPrice);
 	$('#buyRequestPrice').html(buyRequestPrice);
-	incrementBD();
+	$('#littleMinePrice').html(minePrices['little'][0]);
+	$('#mediumMinePrice').html(minePrices['medium'][0]);
+	$('#largeMinePrice').html(minePrices['large'][0]);
+	incrementRessources();
 
 }
 
 //Autocall every second, update ressources and makes options appear
-function incrementBD () {
+function incrementRessources () {
 
-	brokenDreams += incrementationBD;
-	hopes += incrementationHopes;
+	vegetables += incrementationVegetable;
+	golds += incrementationGold;
+	pearls += incrementationPearl;
 	updateRessources();
-	if(brokenDreams >= BDBoostPrice)
-		$('#BDBoostSpan').show();
-	if(brokenDreams >= buyHopePrice)
-		$('#buyHopeSpan').show();
-	if(brokenDreams >= buyRequestPrice)
+	if(vegetables >= vegetableBoostPrice)
+		$('#vegetableBoostSpan').show();
+	if(vegetables >= buyGoldPrice)
+		$('#buyGoldSpan').show();
+	if(vegetables >= buyRequestPrice)
 	{
 		$('#buyRequestSpan').show();
 		$('#imageBoard').show();
 	}
-	setTimeout('incrementBD()',1000);
+	if(vegetables >= minePrices['little'][0])
+		$('#littleMineSpan').show();
+	if(vegetables >= minePrices['medium'][0])
+		$('#mediumMineSpan').show();
+	if(vegetables >= minePrices['large'][0])
+		$('#largeMineSpan').show();
+
+	setTimeout('incrementRessources()',1000);
 
 }
 
 //Refresh the display of ressources
 function updateRessources () {
 
-	$('#nbBD').html(brokenDreams);
-	$('#nbHopes').html(hopes);	
+	$('#nbVegetable').html(vegetables);
+	$('#nbGold').html(golds);	
+	$('#nbPearl').html(pearls);	
 }
 
 //In case user wants to buy for too expensive
@@ -54,15 +86,30 @@ function cantPay () {
 
 }
 
-//Boosts BrokenDreams production
-function BDBoost () {
+//Check if the buyer can afford, return 0 if not
+//If he cans, pays and return 1
+function checkPay(costVegetable, costGold, costPearl) {
 
-	if(brokenDreams<BDBoostPrice)
+	if(vegetables>=costVegetable && golds>=costGold && pearls>=costPearl)
+	{
+		vegetables -= costVegetable;
+		golds -= costGold;
+		pearls -= costPearl;
+		return 1;
+	}
+	else
+	{
 		cantPay();
-	else{
-		brokenDreams -= 5;
-		incrementationBD += 1;
-		$('#Messages').html("Gather faster mankind's Broken Dreams !");
+		return 0;
+	}
+}
+
+//Boosts Vegetables production
+function vegetableBoost () {
+
+	if(checkPay(vegetableBoostPrice,0,0)) {
+		incrementationVegetable += 1;
+		$('#Messages').html("Gather faster Vegetables !");
 	}
 	
 	updateRessources();
@@ -70,14 +117,12 @@ function BDBoost () {
 }
 
 //Buys an hope
-function buyHope () {
+function buyGold () {
 
-	if(brokenDreams<buyHopePrice)
-		cantPay();
-	else{
-		$('#Hopes').show();
-		hopes += 1;
-		$('#Messages').html("With enough Broken Dreams, you can find an Hope ! ");
+	if(checkPay(buyGoldPrice,0,0)){
+		$('#Golds').show();
+		golds += 1;
+		$('#Messages').html("With enough Vegetables, you can find an Gold Coin ! ");
 	}
 	
 	updateRessources();
@@ -85,12 +130,10 @@ function buyHope () {
 }
 
 
-//Displays last e621's picture
+//Gets a picture
 function buyRequest () {
 
-	if(brokenDreams<buyRequestPrice)
-		cantPay();
-	else{
+	if(checkPay(buyRequestPrice,0,0)){
 		image = getData('',game+"/requeteur.php");
 		chaine = 
 		$('#imageBoard').html("<img src='"+image+"'/>");
@@ -101,13 +144,23 @@ function buyRequest () {
 
 }
 
-//Gets requeteur's answer
-function getData(param, page)
-	{
+//Buys a mining session
+function buyMine(mineSize) {
+
+	if(checkPay(minePrices[mineSize][0],0,0))
+		mine(mineSize);
+
+	updateRessources();
+	
+}
+
+//Calls the requestors in PHP
+function getData(param, page) {
 		var XhrObj = new XMLHttpRequest(); //Mozilla
 		XhrObj.open("POST", page, false);
 		XhrObj.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 		XhrObj.send(param);
 		if (XhrObj.readyState == 4 && XhrObj.status == 200) return XhrObj.responseText;
 		else alert("erreur ajax :"+XhrObj.readyState+","+XhrObj.status);
-	}
+}
+
