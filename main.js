@@ -2,9 +2,10 @@
 var game = "TripAtHome";
 
 //Character stats
-var endurance = 20;
-var wisdom = 10;
+var endurance = 10;
+var eyesight = 10;
 var dexterity = 10;
+var luck = 1;
 
 // Ressources
 var vegetables = 45;
@@ -75,7 +76,11 @@ function incrementRessources () {
 function updateRessources () {
 
 	$('#nbVegetable').html(vegetables);
+	if(golds > 0)
+		$('#Golds').show();
 	$('#nbGold').html(golds);	
+	if(pearls > 0)
+		$('#Pearls').show();
 	$('#nbPearl').html(pearls);	
 }
 

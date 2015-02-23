@@ -10,15 +10,17 @@
 <body onload="main();">
 
 	<div id="board">
-		<span id="Vegetables">Vegetables : <span id="nbVegetable">0</span></span><br/>
-		<span id="Golds" style="display:none;">Gold Coins : <span id="nbGold">0</span></span>
-		<span id="Pearls" style="display:none;">Pearls : <span id="nbPearl">0</span></span>
+		<div id="Vegetables">Vegetables : <span id="nbVegetable">0</span></div>
+		<div id="Golds" style="display:none;">Gold Coins : <span id="nbGold">0</span></div>
+		<div id="Pearls" style="display:none;">Pearls : <span id="nbPearl">0</span></div>
 	</div>
 	<div id="messageBoard">
 		<span id="Messages">You're doing all good.</span>
 	</div>
 	<div id="miningBoard" style="display:none;">
 		<span id="miningStatus">Not Mining</span>
+		<span id="timeLeftMining"></span>
+		<div id="ressourcesFound"></div>
 	</div>
 	<div id="actions">
 		<span id="vegetableBoostSpan" style="display:none;" ><button id="vegetableBoostBut" onclick="vegetableBoost()">Boost Vegetables Production</button> (cost : <span id="vegetableBoostPrice">0</span> Vegetables)</span><br/>
