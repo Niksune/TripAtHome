@@ -63,6 +63,8 @@ function mine(mineSize) {
 //Functions called at the end of the mining
 function endMining() {
 
+	stillInMine = 0;
+
 	$("#Messages").html("Mining finished !<br/>");
 	
 	totalValue = totalValuer();
@@ -76,8 +78,6 @@ function endMining() {
 	updateRessources();
 	
 	//$('#miningBoard').hide();
-	
-	stillInMine = 0;
 	
 	console.log("StillInMine = "+stillInMine);
 
@@ -126,23 +126,26 @@ function mineVein(mineSize) {
 //Mines 1 ressource, try to get more and if yes, calls again the function
 function mineRessource(mineSize, ressourceMined) {
 
-	ressourcesGot[ressourceMined] = ressourcesGot[ressourceMined] + 1;
-	stockVein += 1;
-	
-	refreshRessources();
-	
-	if(difficultyDrawD20(dexterity, stockRessourceDifficulty))
+	if(stillInMine)
 	{
-		stockRessourceDifficulty += Math.ceil(difficultyRessources[ressourceMined]/3);
-		setTimeout(function() {
-				mineRessource(mineSize, ressourceMined);
-			},1000);
-	}
-	else
-	{
-		$("#Messages").html("You mined "+stockVein+" "+ressourceMined+" in this vein !");
-		console.log("Finished mining "+ressourceMined);
-		lookingForVein(mineSize);
+		ressourcesGot[ressourceMined] = ressourcesGot[ressourceMined] + 1;
+		stockVein += 1;
+		
+		refreshRessources();
+		
+		if(difficultyDrawD20(dexterity, stockRessourceDifficulty))
+		{
+			stockRessourceDifficulty += Math.ceil(difficultyRessources[ressourceMined]/3);
+			setTimeout(function() {
+					mineRessource(mineSize, ressourceMined);
+				},1000);
+		}
+		else
+		{
+			$("#Messages").html("You mined "+stockVein+" "+ressourceMined+" in this vein !");
+			console.log("Finished mining "+ressourceMined);
+			lookingForVein(mineSize);
+		}
 	}
 	
 }
