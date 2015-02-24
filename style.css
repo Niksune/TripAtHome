@@ -30,3 +30,21 @@
     margin-left: 20px;
     margin-right: 20px;
 }
+
+.itemName
+{
+	min-width: 150px;
+	float: left;
+}
+
+.itemStat
+{
+	min-width: 150px;
+	float: left;
+}
+
+.itemPrice
+{
+	min-width: 150px;
+	float: left;
+}

@@ -1,6 +1,8 @@
 //Game ( "Harem" or "TripAtHome" )
 var game = "TripAtHome";
 
+var vegetablesEaten = 0;
+
 //Character stats
 var endurance = 10;
 var eyesight = 10;
@@ -14,8 +16,14 @@ var pearls = 0;
 
 //Ressource incrementation
 var incrementationVegetable = 1;
-var incrementationGold = 0;
-var incrementationPearl = 0;
+
+//Garden boost extensions
+var gardenBoostsAcquired = new Array(0,0,0);
+
+//Inventory
+var pickaxeEquiped = 0;
+var lightEquiped = 0;
+var trinketEquiped = 0;
 
 //Item's prices
 var vegetableBoostPrice = 5;
@@ -24,6 +32,11 @@ var buyRequestPrice = 15;
 var littleMinePrice = 5;
 var mediumMinePrice = 30;
 var largeMinePrice = 50;
+
+//Accessing shops prices
+var accessMinishopPrice = 20;
+var accessDoormartPrice = 20;
+var accessAlphacraftersPrice = 20;
 
 //Mine's prices
 var minePrices = new Array();
@@ -35,6 +48,7 @@ minePrices['large'] = new Array(50,0,0);
 //Print prices
 function main () {
 
+	bigUpdate();
 	$('#vegetableBoostPrice').html(vegetableBoostPrice);
 	$('#buyGoldPrice').html(buyGoldPrice);
 	$('#buyRequestPrice').html(buyRequestPrice);
@@ -45,12 +59,18 @@ function main () {
 
 }
 
-//Autocall every second, update ressources and makes options appear
+//To update all
+function bigUpdate() {
+	updateInventory();
+	updateStats();
+	updateRessources();
+	updateShops();
+}
+
+//Autocall every second, increment vegetables
 function incrementRessources () {
 
 	vegetables += incrementationVegetable;
-	golds += incrementationGold;
-	pearls += incrementationPearl;
 	updateRessources();
 	if(vegetables >= vegetableBoostPrice)
 		$('#vegetableBoostSpan').show();
@@ -73,6 +93,7 @@ function incrementRessources () {
 }
 
 //Refresh the display of ressources
+//And makes options appear
 function updateRessources () {
 
 	$('#nbVegetable').html(vegetables);
@@ -82,6 +103,33 @@ function updateRessources () {
 	if(pearls > 0)
 		$('#Pearls').show();
 	$('#nbPearl').html(pearls);	
+	
+	if(vegetables >= accessMinishopPrice)
+		$('#minishop').show();
+	if(golds >= 1)
+		$('#doormart').show();
+	if(pearls >= 1)
+		$('#alphacrafters').show();
+
+}
+
+//Refresh the display of ressources
+function updateInventory () {
+
+	$('#spanPickaxe').html(pickaxeNames[pickaxeEquiped]);
+	$('#spanLight').html(lightNames[lightEquiped]);
+	$('#spanTrinket').html(trinketNames[trinketEquiped]);
+	
+}
+
+//Refresh the display of ressources
+function updateStats () {
+
+	$('#spanEndurance').html(endurance);
+	$('#spanEyesight').html(eyesight);
+	$('#spanDexterity').html(dexterity);
+	$('#spanLuck').html(luck);
+	
 }
 
 //In case user wants to buy for too expensive
@@ -107,6 +155,35 @@ function checkPay(costVegetable, costGold, costPearl) {
 		cantPay();
 		return 0;
 	}
+}
+
+//Same function taking an array
+function checkPayArray(arrayCost) {
+
+	if(vegetables>=arrayCost[0] && golds>=arrayCost[1] && pearls>=arrayCost[2])
+	{
+		vegetables -= arrayCost[0];
+		golds -= arrayCost[1];
+		pearls -= arrayCost[2];
+		return 1;
+	}
+	else
+	{
+		cantPay();
+		return 0;
+	}
+}
+
+//Eats your vegetables for Endurance
+function eatVegetables () {
+
+	vegetablesEaten += vegetables;
+	$("#vegetablesEaten").html(vegetablesEaten);
+	endurance = 10 + pickaxeStats[pickaxeEquiped] + Math.ceil(Math.sqrt(vegetablesEaten));
+	vegetables = 0;
+	
+	bigUpdate();
+
 }
 
 //Boosts Vegetables production
