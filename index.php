@@ -33,6 +33,8 @@
 		<div id="Light">Light : <span id="spanLight"></span></div>
 		<div id="Trinket">Trinket : <span id="spanTrinket"></span></div>
 	</div>
+	<div id="requestBoard">
+	</div>
 	<div id="actions">
 		<span id="eatVegetablesSpan" ><button id="eatVegetablesBut" onclick="eatVegetables()">Eat your Vegetables</button> (Vegetables eaten : <span id="vegetablesEaten">0</span>)</span><br/>
 		<span id="vegetableBoostSpan" style="display:none;" ><button id="vegetableBoostBut" onclick="vegetableBoost()">Boost Vegetables Production</button> (cost : <span id="vegetableBoostPrice">0</span> Vegetables)</span><br/>
@@ -46,8 +48,6 @@
 		<div id="minishop" style="display:none;"></div>
 		<div id="doormart" style="display:none;"></div>
 		<div id="alphacrafters" style="display:none;"></div>
-	</div>
-	<div id="imageBoard" style="display:none;">
 	</div>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>

@@ -51,7 +51,7 @@ function mine(mineSize) {
 
 	stockEyesight = eyesight;
 
-	timeInMine = (10 + endurance)*timeMineMultiplier[mineSize];
+	timeInMine = Math.floor((10 + endurance)*timeMineMultiplier[mineSize]);
 	
 	compteurMine(timeInMine);
 	

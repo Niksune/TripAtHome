@@ -2,7 +2,7 @@
 
 	//Créateur de requètes
 	//En entrée un tableau contenant les mots clefs
-	//En sortie un array contenant la requète (forme : https://e621.net/post/index.xml?tags=sonic_the_hedgehog+solo+rating:safe)
+	//En sortie un string contenant la requète (forme : https://e621.net/post/index.xml?tags=sonic_the_hedgehog+solo+rating:safe)
 	function requestCreator(array $criterias) {
 
 		$request = 'https://e621.net/post/index.xml?tags='.$criterias[0];
@@ -21,10 +21,9 @@
 	//A partir d'une requète retourne l'image du premier post
 	//En entrée un string contenant la requète
 	//En sortie l'URL de l'image
-	function getImageURL($request) {
-	
+	function getImageURL($request, $number) {
 		$xml = simplexml_load_file($request);
-		return($xml->post["file_url"][0]);
+		return($xml->post["file_url"][$number]);
 	
 	}
 	
