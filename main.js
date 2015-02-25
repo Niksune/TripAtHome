@@ -12,7 +12,7 @@ var luck = 1;
 // Ressources
 var vegetables = 45;
 var golds = 0;
-var pearls = 0;
+var opals = 0;
 
 //Ressource incrementation
 var incrementationVegetable = 1;
@@ -100,15 +100,15 @@ function updateRessources () {
 	if(golds > 0)
 		$('#Golds').show();
 	$('#nbGold').html(golds);	
-	if(pearls > 0)
-		$('#Pearls').show();
-	$('#nbPearl').html(pearls);	
+	if(opals > 0)
+		$('#Opals').show();
+	$('#nbOpal').html(opals);	
 	
 	if(vegetables >= accessMinishopPrice)
 		$('#minishop').show();
 	if(golds >= 1)
 		$('#doormart').show();
-	if(pearls >= 1)
+	if(opals >= 1)
 		$('#alphacrafters').show();
 
 }
@@ -141,13 +141,13 @@ function cantPay () {
 
 //Check if the buyer can afford, return 0 if not
 //If he cans, pays and return 1
-function checkPay(costVegetable, costGold, costPearl) {
+function checkPay(costVegetable, costGold, costOpal) {
 
-	if(vegetables>=costVegetable && golds>=costGold && pearls>=costPearl)
+	if(vegetables>=costVegetable && golds>=costGold && opals>=costOpal)
 	{
 		vegetables -= costVegetable;
 		golds -= costGold;
-		pearls -= costPearl;
+		opals -= costOpal;
 		return 1;
 	}
 	else
@@ -160,11 +160,11 @@ function checkPay(costVegetable, costGold, costPearl) {
 //Same function taking an array
 function checkPayArray(arrayCost) {
 
-	if(vegetables>=arrayCost[0] && golds>=arrayCost[1] && pearls>=arrayCost[2])
+	if(vegetables>=arrayCost[0] && golds>=arrayCost[1] && opals>=arrayCost[2])
 	{
 		vegetables -= arrayCost[0];
 		golds -= arrayCost[1];
-		pearls -= arrayCost[2];
+		opals -= arrayCost[2];
 		return 1;
 	}
 	else
@@ -192,19 +192,6 @@ function vegetableBoost () {
 	if(checkPay(vegetableBoostPrice,0,0)) {
 		incrementationVegetable += 1;
 		$('#Messages').html("Gather faster Vegetables !");
-	}
-	
-	updateRessources();
-
-}
-
-//Buys an hope
-function buyGold () {
-
-	if(checkPay(buyGoldPrice,0,0)){
-		$('#Golds').show();
-		golds += 1;
-		$('#Messages').html("With enough Vegetables, you can find an Gold Coin ! ");
 	}
 	
 	updateRessources();

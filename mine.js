@@ -4,15 +4,15 @@ var difficultyFinding = {"little": 25, "medium": 40, "large": 70};
 var timeMineMultiplier = {"little": 1.5, "medium": 1, "large": 0.75};
 
 var mineRessources = new Array();
-mineRessources['little'] = {"Silver": 25, "Gold": 40, "Platinum": 48, "Pearl": 50};
-mineRessources['medium'] = {"Platinum": 25, "Pearl": 40, "Sapphire": 48, "Emerald": 50};
+mineRessources['little'] = {"Silver": 25, "Gold": 40, "Platinum": 48, "Opal": 50};
+mineRessources['medium'] = {"Platinum": 25, "Opal": 40, "Sapphire": 48, "Emerald": 50};
 mineRessources['large'] = {"Sapphire": 25, "Emerald": 40, "Ruby": 48, "Diamond": 50};
 
 var priceRessources = new Array();
 priceRessources['Silver'] = new Array(50,0,0);
 priceRessources['Gold'] = new Array(0,1,0);
 priceRessources['Platinum'] = new Array(20,5,0);
-priceRessources['Pearl'] = new Array(0,0,1);
+priceRessources['Opal'] = new Array(0,0,1);
 priceRessources['Sapphire'] = new Array(50,3,5);
 priceRessources['Emerald'] = new Array(0,0,10);
 priceRessources['Ruby'] = new Array(50,50,50);
@@ -22,7 +22,7 @@ var difficultyRessources = new Array();
 difficultyRessources['Silver'] = 15;
 difficultyRessources['Gold'] = 21;
 difficultyRessources['Platinum'] = 33;
-difficultyRessources['Pearl'] = 40;
+difficultyRessources['Opal'] = 40;
 difficultyRessources['Sapphire'] = 55;
 difficultyRessources['Emerald'] = 70;
 difficultyRessources['Ruby'] = 80;
@@ -41,7 +41,11 @@ function mine(mineSize) {
 
 	stillInMine = 1;
 	
-	ressourcesGot = {"Silver": 0, "Gold": 0, "Platinum": 0, "Pearl": 0, "Sapphire": 0, "Emerald": 0, "Ruby": 0, "Diamond": 0};
+	$("#littleMineBut").prop('disabled', true);
+	$("#mediumMineBut").prop('disabled', true);
+	$("#largeMineBut").prop('disabled', true);
+	
+	ressourcesGot = {"Silver": 0, "Gold": 0, "Platinum": 0, "Opal": 0, "Sapphire": 0, "Emerald": 0, "Ruby": 0, "Diamond": 0};
 
 	refreshRessources();
 	
@@ -64,16 +68,20 @@ function mine(mineSize) {
 function endMining() {
 
 	stillInMine = 0;
+	
+	$("#littleMineBut").prop('disabled', false);
+	$("#mediumMineBut").prop('disabled', false);
+	$("#largeMineBut").prop('disabled', false);
 
 	$("#Messages").html("Mining finished !<br/>");
 	
 	totalValue = totalValuer();
 	
-	$("#Messages").html("You recolted a total of : "+totalValue[0]+" vegetables, "+totalValue[1]+" golds and "+totalValue[2]+" pearls.");
+	$("#Messages").html("You recolted a total of : "+totalValue[0]+" vegetables, "+totalValue[1]+" golds and "+totalValue[2]+" opals.");
 	
 	vegetables += totalValue[0];
 	golds += totalValue[1];
-	pearls += totalValue[2];
+	opals += totalValue[2];
 	
 	updateRessources();
 	
@@ -210,7 +218,7 @@ function refreshRessources() {
 	var	totalValue = new Array();
 	totalValue = totalValuer();
 	
-	ressourcesHTML += "Total value : "+totalValue[0]+" vegetables, "+totalValue[1]+" golds and "+totalValue[2]+" pearls";
+	ressourcesHTML += "Total value : "+totalValue[0]+" vegetables, "+totalValue[1]+" golds and "+totalValue[2]+" opals";
 	
 	$('#ressourcesFound').html(ressourcesHTML);
 

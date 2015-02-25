@@ -20,6 +20,10 @@ var pickaxeStats = {0: 0, 1: 5, 2: 10, 3: 20, 4: 30, 5: 60, 6: 100};
 var lightStats = {0: 0, 1: 5, 2: 10, 3: 20, 4: 30, 5: 60, 6: 100};
 var trinketStats = {0: 0, 1: 1, 2: 2, 3: 3, 4: 5, 5: 7, 6: 10};
 
+//Ressource exchange
+var buyRessourcePrice = 100;
+var sellRessourcePrice = 50;
+
 //Update shops display
 function updateShops() {
 
@@ -57,6 +61,9 @@ function updateShops() {
 	}
 	else{
 		stockHTML = "<b>DOORMART</b><br/>";
+		stockHTML += '<div><span class="itemName">A Gold Coin</span><span class="itemPrice">'+displayPrice(new Array(buyRessourcePrice,0,0))+'</span><button onclick="buyGold()">Buy it !</button></div>';
+		stockHTML += '<div><span class="itemName">'+sellRessourcePrice+' Vegetables</span><span class="itemPrice">'+displayPrice(new Array(0,1,0))+'</span><button onclick="sellGold()">Buy it !</button></div>';
+		
 		var i = 3;
 		if(i > pickaxeEquiped) 
 			stockHTML += '<div><span class="itemName">'+pickaxeNames[i]+'</span><span class="itemStat">'+pickaxeStats[i]+' Dexterity</span><span class="itemPrice">'+displayPrice(pickaxePrices[i])+'</span><button onclick="buyPickaxe('+i+')">Buy it !</button></div>';
@@ -81,10 +88,13 @@ function updateShops() {
 	}	
 	
 	if(!accessAlphacrafters){
-		$("#alphacrafters").html('<span id="accessAlphacrafters" ><button id="accessAlphacraftersBut" onclick="accessAlphacraftersFct()">Access Alpha Crafters</button> (cost : '+accessAlphacraftersPrice+' Pearls)</span><br/>');
+		$("#alphacrafters").html('<span id="accessAlphacrafters" ><button id="accessAlphacraftersBut" onclick="accessAlphacraftersFct()">Access Alpha Crafters</button> (cost : '+accessAlphacraftersPrice+' Opals)</span><br/>');
 	}
 	else{
 		stockHTML = "<b>ALPHA CRAFTERS</b><br/>";
+		stockHTML += '<div><span class="itemName">An Opal</span><span class="itemPrice">'+displayPrice(new Array(0,buyRessourcePrice,0))+'</span><button onclick="buyOpal()">Buy it !</button></div>';
+		stockHTML += '<div><span class="itemName">'+sellRessourcePrice+' Gold Coins</span><span class="itemPrice">'+displayPrice(new Array(0,0,1))+'</span><button onclick="sellOpal()">Buy it !</button></div>';
+		
 		var i = 5;
 		if(i > pickaxeEquiped) 
 			stockHTML += '<div><span class="itemName">'+pickaxeNames[i]+'</span><span class="itemStat">'+pickaxeStats[i]+' Dexterity</span><span class="itemPrice">'+displayPrice(pickaxePrices[i])+'</span><button onclick="buyPickaxe('+i+')">Buy it !</button></div>';
@@ -149,9 +159,9 @@ function displayPrice(arrayPrices) {
 		stockHTML += " "+arrayPrices[1]+" G ";
 		
 	if(arrayPrices[2]==1)
-		stockHTML += " 1 P ";
+		stockHTML += " 1 O ";
 	else if(arrayPrices[2]>1)
-		stockHTML += " "+arrayPrices[2]+" P ";
+		stockHTML += " "+arrayPrices[2]+" O ";
 		
 	return stockHTML;
 }
@@ -189,4 +199,38 @@ function buyGuardeningBoost(number) {
 		incrementationVegetable *= 2;
 		bigUpdate();
 	}
+}
+
+//Ressource exchange
+function buyGold () {
+
+	if(checkPay(buyRessourcePrice,0,0))
+		golds += 1;
+
+	updateRessources();
+
+}
+function buyOpal () {
+
+	if(checkPay(0,buyRessourcePrice,0))
+		opals += 1;
+
+	updateRessources();
+
+}
+function sellGold () {
+
+	if(checkPay(0,1,0))
+		vegetables += sellRessourcePrice;
+
+	updateRessources();
+
+}
+function sellOpal () {
+
+	if(checkPay(0,0,1))
+		golds += sellRessourcePrice;
+		
+	updateRessources();
+
 }

@@ -12,7 +12,7 @@
 	<div id="board">
 		<div id="Vegetables">Vegetables : <span id="nbVegetable">0</span></div>
 		<div id="Golds" style="display:none;">Gold Coins : <span id="nbGold">0</span></div>
-		<div id="Pearls" style="display:none;">Pearls : <span id="nbPearl">0</span></div>
+		<div id="Opals" style="display:none;">Opals : <span id="nbOpal">0</span></div>
 	</div>
 	<div id="messageBoard">
 		<span id="Messages">You're doing all good.</span>
@@ -40,9 +40,9 @@
 		<span id="vegetableBoostSpan" style="display:none;" ><button id="vegetableBoostBut" onclick="vegetableBoost()">Boost Vegetables Production</button> (cost : <span id="vegetableBoostPrice">0</span> Vegetables)</span><br/>
 		<span id="buyGoldSpan" style="display:none;" ><button id="buyGoldBut" onclick="buyGold()">Buy a Gold Coin</button> (cost : <span id="buyGoldPrice">0</span> Vegetables)</span><br/>
 		<span id="buyRequestSpan" style="display:none;" ><button id="buyRequest" onclick="buyRequest()">Buy a Request</button> (cost : <span id="buyRequestPrice">0</span> Vegetables)</span><br/>
-		<span id="littleMineSpan" style="display:none;" ><button id="littleMine" onclick="buyMine('little')">Mine in Little mine</button> (cost : <span id="littleMinePrice">0</span> Vegetables)</span><br/>
-		<span id="mediumMineSpan" style="display:none;" ><button id="mediumMine" onclick="buyMine('medium')">Mine in Medium mine</button> (cost : <span id="mediumMinePrice">0</span> Vegetables)</span><br/>
-		<span id="largeMineSpan" style="display:none;" ><button id="largeMine" onclick="buyMine('large')">Mine in Large mine</button> (cost : <span id="largeMinePrice">0</span> Vegetables)</span>
+		<span id="littleMineSpan" style="display:none;" ><button id="littleMineBut" onclick="buyMine('little')">Mine in Little mine</button> (cost : <span id="littleMinePrice">0</span> Vegetables)</span><br/>
+		<span id="mediumMineSpan" style="display:none;" ><button id="mediumMineBut" onclick="buyMine('medium')">Mine in Medium mine</button> (cost : <span id="mediumMinePrice">0</span> Vegetables)</span><br/>
+		<span id="largeMineSpan" style="display:none;" ><button id="largeMineBut" onclick="buyMine('large')">Mine in Large mine</button> (cost : <span id="largeMinePrice">0</span> Vegetables)</span>
 	</div>
 	<div id="shops">
 		<div id="minishop" style="display:none;"></div>
