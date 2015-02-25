@@ -1,9 +1,11 @@
 //Game ( "Harem" or "TripAtHome" )
-var game = "TripAtHome";
+var game = "Harem";
 
-var vegetablesEaten = 0;
+//Loads the right requestor
+$.getScript(game+"requesting.js");
 
 //Character stats
+var vegetablesEaten = 0;
 var endurance = 10;
 var eyesight = 10;
 var dexterity = 10;
