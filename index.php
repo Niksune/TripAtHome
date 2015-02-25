@@ -37,10 +37,12 @@
 	</div>
 	<div id="actions">
 		<span id="eatVegetablesSpan" ><button id="eatVegetablesBut" onclick="eatVegetables()">Eat your Vegetables</button> (Vegetables eaten : <span id="vegetablesEaten">0</span>)</span><br/>
-		<span id="buyRequestSpan" style="display:none;" ><button id="buyRequest" onclick="buyRequest()">Buy a Request</button> (cost : <span id="buyRequestPrice">0</span> Vegetables)</span><br/>
+		<span id="buyLittleRequestSpan" style="display:none;" ><button id="buyLittleRequest" onclick="buyRequest(1)">Buy a Little Request</button> (cost : <span id="littleRequestPrice">0</span> Vegetables)</span><br/>
+		<span id="buyMediumRequestSpan" style="display:none;" ><button id="buyMediumRequest" onclick="buyRequest(2)">Buy a Medium Request</button> (cost : <span id="mediumRequestPrice">0</span> Gold Coins)</span><br/>
+		<span id="buyBigRequestSpan" style="display:none;" ><button id="buyBigRequest" onclick="buyRequest(3)">Buy a Big Request</button> (cost : <span id="bigRequestPrice">0</span> Opals)</span><br/>
 		<span id="littleMineSpan" style="display:none;" ><button id="littleMineBut" onclick="buyMine('little')">Mine in Little mine</button> (cost : <span id="littleMinePrice">0</span> Vegetables)</span><br/>
-		<span id="mediumMineSpan" style="display:none;" ><button id="mediumMineBut" onclick="buyMine('medium')">Mine in Medium mine</button> (cost : <span id="mediumMinePrice">0</span> Vegetables)</span><br/>
-		<span id="largeMineSpan" style="display:none;" ><button id="largeMineBut" onclick="buyMine('large')">Mine in Large mine</button> (cost : <span id="largeMinePrice">0</span> Vegetables)</span>
+		<span id="mediumMineSpan" style="display:none;" ><button id="mediumMineBut" onclick="buyMine('medium')">Mine in Medium mine</button> (cost : <span id="mediumMinePrice">0</span> Gold Coins)</span><br/>
+		<span id="largeMineSpan" style="display:none;" ><button id="largeMineBut" onclick="buyMine('large')">Mine in Large mine</button> (cost : <span id="largeMinePrice">0</span> Opals)</span>
 	</div>
 	<div id="shops">
 		<div id="minishop" style="display:none;"></div>
@@ -51,6 +53,7 @@
 	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript" src="shopping.js"></script>
 	<script type="text/javascript" src="mine.js"></script>
+	<script type="text/javascript" src="requesting.js"></script>
 </body>
 
 </html>

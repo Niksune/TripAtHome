@@ -57,7 +57,7 @@ function updateShops() {
 	}	
 	
 	if(!accessDoormart){
-		$("#doormart").html('<span id="accessDoormart" ><button id="accessDoormartBut" onclick="accessDoormartFct()">Access DoormMart</button> (cost : '+accessDoormartPrice+' Gold Coins)</span><br/>');
+		$("#doormart").html('<span id="accessDoormart" ><button id="accessDoormartBut" onclick="accessDoormartFct()">Access DoorMart</button> (cost : '+accessDoormartPrice+' Gold Coins)</span><br/>');
 	}
 	else{
 		stockHTML = "<b>DOORMART</b><br/>";

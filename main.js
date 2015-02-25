@@ -25,13 +25,15 @@ var pickaxeEquiped = 0;
 var lightEquiped = 0;
 var trinketEquiped = 0;
 
-//Item's prices
-var vegetableBoostPrice = 5;
-var buyGoldPrice = 10;
-var buyRequestPrice = 15;
+//Mining prices
 var littleMinePrice = 5;
 var mediumMinePrice = 30;
 var largeMinePrice = 50;
+
+//Requesting prices
+var littleRequestPrice = 20;
+var mediumRequestPrice = 20;
+var bigRequestPrice = 20;
 
 //Accessing shops prices
 var accessMinishopPrice = 20;
@@ -41,20 +43,20 @@ var accessAlphacraftersPrice = 20;
 //Mine's prices
 var minePrices = new Array();
 minePrices['little'] = new Array(5,0,0);
-minePrices['medium'] = new Array(30,0,0);
-minePrices['large'] = new Array(50,0,0);
+minePrices['medium'] = new Array(0,5,0);
+minePrices['large'] = new Array(0,0,5);
 
 //Summon main features
 //Print prices
 function main () {
 
 	bigUpdate();
-	$('#vegetableBoostPrice').html(vegetableBoostPrice);
-	$('#buyGoldPrice').html(buyGoldPrice);
-	$('#buyRequestPrice').html(buyRequestPrice);
+	$('#littleRequestPrice').html(littleRequestPrice);
+	$('#mediumRequestPrice').html(mediumRequestPrice);
+	$('#bigRequestPrice').html(bigRequestPrice);
 	$('#littleMinePrice').html(minePrices['little'][0]);
-	$('#mediumMinePrice').html(minePrices['medium'][0]);
-	$('#largeMinePrice').html(minePrices['large'][0]);
+	$('#mediumMinePrice').html(minePrices['medium'][1]);
+	$('#largeMinePrice').html(minePrices['large'][2]);
 	incrementRessources();
 
 }
@@ -72,20 +74,22 @@ function incrementRessources () {
 
 	vegetables += incrementationVegetable;
 	updateRessources();
-	if(vegetables >= vegetableBoostPrice)
-		$('#vegetableBoostSpan').show();
-	if(vegetables >= buyGoldPrice)
-		$('#buyGoldSpan').show();
-	if(vegetables >= buyRequestPrice)
+	
+	//If a item is buyable it displays
+	if(vegetables >= littleRequestPrice)
 	{
-		$('#buyRequestSpan').show();
+		$('#buyLittleRequestSpan').show();
 		$('#imageBoard').show();
 	}
+	if(golds >= mediumRequestPrice)
+		$('#buyMediumRequestSpan').show();
+	if(opals >= bigRequestPrice)
+		$('#buyBigRequestSpan').show();
 	if(vegetables >= minePrices['little'][0])
 		$('#littleMineSpan').show();
-	if(vegetables >= minePrices['medium'][0])
+	if(golds >= minePrices['medium'][1])
 		$('#mediumMineSpan').show();
-	if(vegetables >= minePrices['large'][0])
+	if(opals >= minePrices['large'][2])
 		$('#largeMineSpan').show();
 
 	setTimeout('incrementRessources()',1000);
@@ -185,7 +189,7 @@ function eatVegetables () {
 	bigUpdate();
 
 }
-
+/* OLD
 //Gets a picture
 function buyRequest () {
 
@@ -197,15 +201,36 @@ function buyRequest () {
 	}
 	
 	updateRessources();
+}
+*/
 
+//Buys a request session
+function buyRequest (requestType) {
+
+	if(requestType){	
+		if(checkPay(littleRequestPrice,0,0))
+			request(requestType);
+	}
+	
+	if(requestType==2){	
+		if(checkPay(0,mediumRequestPrice,0))
+			request(requestType);
+	}
+	
+	if(requestType==3){	
+		if(checkPay(0,0,bigRequestPrice))
+			request(requestType);
+	}
+	
+	updateRessources();
 }
 
 //Buys a mining session
 function buyMine(mineSize) {
 
-	if(checkPay(minePrices[mineSize][0],0,0))
+	if(checkPayArray(minePrices[mineSize]))
 		mine(mineSize);
-
+		
 	updateRessources();
 	
 }
