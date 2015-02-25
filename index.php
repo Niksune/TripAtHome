@@ -37,9 +37,9 @@
 	</div>
 	<div id="actions">
 		<span id="eatVegetablesSpan" ><button id="eatVegetablesBut" onclick="eatVegetables()">Eat your Vegetables</button> (Vegetables eaten : <span id="vegetablesEaten">0</span>)</span><br/>
-		<span id="buyLittleRequestSpan" style="display:none;" ><button id="buyLittleRequest" onclick="buyRequest(1)">Buy a Little Request</button> (cost : <span id="littleRequestPrice">0</span> Vegetables)</span><br/>
-		<span id="buyMediumRequestSpan" style="display:none;" ><button id="buyMediumRequest" onclick="buyRequest(2)">Buy a Medium Request</button> (cost : <span id="mediumRequestPrice">0</span> Gold Coins)</span><br/>
-		<span id="buyBigRequestSpan" style="display:none;" ><button id="buyBigRequest" onclick="buyRequest(3)">Buy a Big Request</button> (cost : <span id="bigRequestPrice">0</span> Opals)</span><br/>
+		<span id="buyLittleRequestSpan" style="display:none;" ><button id="buyLittleRequestBut" onclick="buyRequest(1)">Buy a Little Request</button> (cost : <span id="littleRequestPrice">0</span> Vegetables)</span><br/>
+		<span id="buyMediumRequestSpan" style="display:none;" ><button id="buyMediumRequestBut" onclick="buyRequest(2)">Buy a Medium Request</button> (cost : <span id="mediumRequestPrice">0</span> Gold Coins)</span><br/>
+		<span id="buyBigRequestSpan" style="display:none;" ><button id="buyBigRequestBut" onclick="buyRequest(3)">Buy a Big Request</button> (cost : <span id="bigRequestPrice">0</span> Opals)</span><br/>
 		<span id="littleMineSpan" style="display:none;" ><button id="littleMineBut" onclick="buyMine('little')">Mine in Little mine</button> (cost : <span id="littleMinePrice">0</span> Vegetables)</span><br/>
 		<span id="mediumMineSpan" style="display:none;" ><button id="mediumMineBut" onclick="buyMine('medium')">Mine in Medium mine</button> (cost : <span id="mediumMinePrice">0</span> Gold Coins)</span><br/>
 		<span id="largeMineSpan" style="display:none;" ><button id="largeMineBut" onclick="buyMine('large')">Mine in Large mine</button> (cost : <span id="largeMinePrice">0</span> Opals)</span>
