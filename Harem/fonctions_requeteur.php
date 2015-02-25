@@ -23,7 +23,7 @@
 	//En sortie l'URL de l'image
 	function getImageURL($request, $number) {
 		$xml = simplexml_load_file($request);
-		return($xml->post["file_url"][$number]);
+		return($xml->post[$number]["file_url"]);
 	
 	}
 	

@@ -1,9 +1,6 @@
 //Game ( "Harem" or "TripAtHome" )
 var game = "Harem";
 
-//Loads the right requestor
-$.getScript(game+"requesting.js");
-
 //Character stats
 var vegetablesEaten = 0;
 var endurance = 10;
@@ -236,14 +233,3 @@ function buyMine(mineSize) {
 	updateRessources();
 	
 }
-
-//Calls the requestors in PHP
-function getData(param, page) {
-		var XhrObj = new XMLHttpRequest(); //Mozilla
-		XhrObj.open("POST", page, false);
-		XhrObj.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-		XhrObj.send(param);
-		if (XhrObj.readyState == 4 && XhrObj.status == 200) return XhrObj.responseText;
-		else alert("erreur ajax :"+XhrObj.readyState+","+XhrObj.status);
-}
-

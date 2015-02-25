@@ -34,7 +34,6 @@
 		<div id="Trinket">Trinket : <span id="spanTrinket"></span></div>
 	</div>
 	<div id="requestBoard">
-		<div id="imageBoard"></div>
 	</div>
 	<div id="actions">
 		<span id="eatVegetablesSpan" ><button id="eatVegetablesBut" onclick="eatVegetables()">Eat your Vegetables</button> (Vegetables eaten : <span id="vegetablesEaten">0</span>)</span><br/>
@@ -54,6 +53,7 @@
 	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript" src="shopping.js"></script>
 	<script type="text/javascript" src="mine.js"></script>
+	<script type="text/javascript" src="requesting.js"></script>
 </body>
 
 </html>
