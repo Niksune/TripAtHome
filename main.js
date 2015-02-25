@@ -10,7 +10,7 @@ var dexterity = 10;
 var luck = 1;
 
 // Ressources
-var vegetables = 45;
+var vegetables = 500;
 var golds = 0;
 var opals = 0;
 
@@ -185,19 +185,6 @@ function eatVegetables () {
 	bigUpdate();
 
 }
-
-//Boosts Vegetables production
-function vegetableBoost () {
-
-	if(checkPay(vegetableBoostPrice,0,0)) {
-		incrementationVegetable += 1;
-		$('#Messages').html("Gather faster Vegetables !");
-	}
-	
-	updateRessources();
-
-}
-
 
 //Gets a picture
 function buyRequest () {
