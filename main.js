@@ -188,20 +188,6 @@ function eatVegetables () {
 	bigUpdate();
 
 }
-/* OLD
-//Gets a picture
-function buyRequest () {
-
-	if(checkPay(buyRequestPrice,0,0)){
-		image = getData('',game+"/requeteur.php");
-		chaine = 
-		$('#imageBoard').html("<img src='"+image+"'/>");
-		$('#Messages').html("Have fun, you well deserved it... ");
-	}
-	
-	updateRessources();
-}
-*/
 
 //Buys a request session
 function buyRequest (requestType) {

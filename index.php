@@ -33,7 +33,7 @@
 		<div id="Light">Light : <span id="spanLight"></span></div>
 		<div id="Trinket">Trinket : <span id="spanTrinket"></span></div>
 	</div>
-	<div id="requestBoard">
+	<div id="requestBoard" style="display:none;">
 	</div>
 	<div id="actions">
 		<span id="eatVegetablesSpan" ><button id="eatVegetablesBut" onclick="eatVegetables()">Eat your Vegetables</button> (Vegetables eaten : <span id="vegetablesEaten">0</span>)</span><br/>
