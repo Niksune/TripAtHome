@@ -1,8 +1,8 @@
 <?php
 
-	//Créateur de requètes
+	//Créateur de requctes
 	//En entrée un tableau contenant les mots clefs
-	//En sortie un string contenant la requète (forme : https://e621.net/post/index.xml?tags=sonic_the_hedgehog+solo+rating:safe)
+	//En sortie un array contenant la requcte (forme : https://e621.net/post/index.xml?tags=sonic_the_hedgehog+solo+rating:safe)
 	function requestCreator(array $criterias) {
 
 		$request = 'https://e621.net/post/index.xml?tags='.$criterias[0];
@@ -18,17 +18,18 @@
 		return $request;
 	}
 
-	//A partir d'une requète retourne l'image du premier post
-	//En entrée un string contenant la requète
+	//A partir d'une requcte retourne l'image du premier post
+	//En entrée un string contenant la requcte
 	//En sortie l'URL de l'image
-	function getImageURL($request, $number) {
+	function getImageURL($request,$number) {
+	
 		$xml = simplexml_load_file($request);
 		return($xml->post[$number]["file_url"]);
 	
 	}
 	
-	//Renvoie le nombre de réponses correspondant à la recherche
-	//Entrée : string requète
+	//Renvoie le nombre de réponses correspondant r la recherche
+	//Entrée : string requcte
 	//Sortie : nombre
 	function howMany($request){
 	
