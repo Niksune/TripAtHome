@@ -8,6 +8,8 @@ var rerolled = 0;
 //RequestType is 1, 2 or 3
 function request(requestType) {
 
+	console.log("Request started, requestType ="+requestType);
+
 //reset some variables
 	actualLevel = 0;
 	rerolled = 0;
@@ -112,7 +114,9 @@ function updateNextBut() {
 	else if (actualLevel==0 && game!="TripAtHome")
 		return "Show me more";
 		
-	if((requestTypeGlobal && actualLevel==1)||(requestTypeGlobal==2 && actualLevel==3)) {
+	console.log("requestTypeGlobal :"+requestTypeGlobal+" actualLevel : "+actualLevel);
+		
+	if((requestTypeGlobal==1 && actualLevel==1)||(requestTypeGlobal==2 && actualLevel==3)) {
 		$("#nextBut").prop("disabled",true);
 		$("#nextBut").html("To have more, take a biger request <3");
 	} else if (requestTypeGlobal==3 && actualLevel==5) {

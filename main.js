@@ -10,8 +10,8 @@ var luck = 1;
 
 // Ressources
 var vegetables = 500;
-var golds = 0;
-var opals = 0;
+var golds = 500;
+var opals = 500;
 
 //Ressource incrementation
 var incrementationVegetable = 1;
