@@ -37,13 +37,18 @@ function startRequest() {
         }
     }
 	
-	var options1 = document.forms[1];
-    for (i = 0; i < options1.length; i++) {
-        if (options1[i].checked) {
-            option1 = options1[i].value;
-        }
-    }
-	
+	if(game != "TripAtHome")
+	{
+		var options1 = document.forms[1];
+		for (i = 0; i < options1.length; i++) {
+			if (options1[i].checked) {
+				option1 = options1[i].value;
+			}
+		}
+	}
+	else
+		option1 = 2;
+		
 	$("#requestBoard").html('<div id="requestButtons"><button onclick="nextPicture(0)" id="sameBut">Gimme the same kind !</button> <button onclick="nextPicture(1)" id="nextBut">'+updateNextBut()+'</button> <button onclick="endRequesting()">Stop for now</button> </div><div id="imageBoard"></div>');
 	
 	displayPicture(0);
@@ -95,7 +100,10 @@ function updateNextBut() {
 	//Updates the next button
 	if(game=="TripAtHome"){
 		switch(actualLevel){
-		
+			case 1:messageNext = "Maybe some faith building ?";break;
+			case 2:messageNext = "Gimme a few monuments";break;
+			case 3:messageNext = "I want some street art";break;
+			case 4:messageNext = "And to finish : a party";break;
 		}
 	}
 	else{
@@ -110,7 +118,7 @@ function updateNextBut() {
 	$("#nextBut").html(messageNext);
 	
 	if(actualLevel==0 && game=="TripAtHome")
-		return "Let's go somewhere else";
+		return "Show me buildings";
 	else if (actualLevel==0 && game!="TripAtHome")
 		return "Show me more";
 		

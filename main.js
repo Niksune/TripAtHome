@@ -1,5 +1,5 @@
 //Game ( "Harem" or "TripAtHome" )
-var game = "Harem";
+var game = "TripAtHome";
 
 //Character stats
 var vegetablesEaten = 0;
