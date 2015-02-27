@@ -9,7 +9,12 @@
 
 <body onload="main();">
 
-	<div id="title"></div>
+	<div id="titleScreen"></div>
+	<div id="save">
+		<button id="saveBut" onclick="save()">Save</button>
+		<span id="gameIDspan" style="display:none;"><?php if(isset($_GET['gameID'])) { echo($_GET['gameID']); } else { echo("none"); } ?></span>
+		<span id="loadURL"></span>
+	</div>
 	<div id="board">
 		<div id="Vegetables">Vegetables : <span id="nbVegetable">0</span></div>
 		<div id="Golds" style="display:none;">Gold Coins : <span id="nbGold">0</span></div>

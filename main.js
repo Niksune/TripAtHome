@@ -1,5 +1,6 @@
 //Game ( "Harem" or "TripAtHome" )
 var game = "Harem";
+var gameID = 0;
 
 //Character stats
 var vegetablesEaten = 0;
@@ -44,8 +45,14 @@ minePrices['large'] = new Array(0,0,10);
 //Print prices
 function main () {
 
+	if($('#gameIDspan').html() != "none") {
+		gameID=$('#gameIDspan').html();
+		console.log(gameID);
+		load();
+	}
+
 	bigUpdate();
-	$('#title').html(game);
+	$('#titleScreen').html(game);
 	$('#littleRequestPrice').html(littleRequestPrice);
 	$('#mediumRequestPrice').html(mediumRequestPrice);
 	$('#bigRequestPrice').html(bigRequestPrice);
@@ -90,6 +97,7 @@ function bigUpdate() {
 	updateInventory();
 	updateStats();
 	updateShops();
+	$("#vegetablesEaten").html(vegetablesEaten);;
 }
 
 //Refresh the display of ressources
