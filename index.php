@@ -9,6 +9,7 @@
 
 <body onload="main();">
 
+	<div id="title"></div>
 	<div id="board">
 		<div id="Vegetables">Vegetables : <span id="nbVegetable">0</span></div>
 		<div id="Golds" style="display:none;">Gold Coins : <span id="nbGold">0</span></div>
@@ -54,6 +55,7 @@
 	<script type="text/javascript" src="shopping.js"></script>
 	<script type="text/javascript" src="mine.js"></script>
 	<script type="text/javascript" src="requesting.js"></script>
+	<script type="text/javascript" src="save.js"></script>
 </body>
 
 </html>

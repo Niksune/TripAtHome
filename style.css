@@ -49,3 +49,9 @@
 	width: 900px;
 	height: 900px;
 }
+
+#title
+{
+	font-size: large;
+	font-style: bold;
+}

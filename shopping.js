@@ -21,8 +21,8 @@ var lightStats = {0: 0, 1: 5, 2: 10, 3: 20, 4: 30, 5: 60, 6: 100};
 var trinketStats = {0: 0, 1: 1, 2: 2, 3: 3, 4: 5, 5: 7, 6: 10};
 
 //Ressource exchange
-var buyRessourcePrice = 100;
-var sellRessourcePrice = 50;
+var buyRessourcePrice = 20;
+var sellRessourcePrice = 10;
 
 //Update shops display
 function updateShops() {
