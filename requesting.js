@@ -186,7 +186,7 @@ function scaleSize(maxW, maxH, currW, currH){
 function imageFunction(){
 	dimentions[0]=$('#imageBoard').width();
 	dimentions[1]=$('#imageBoard').height();
-	dimentions = scaleSize(1000,750,dimentions[0],dimentions[1]);
+	dimentions = scaleSize(750,750,dimentions[0],dimentions[1]);
 	$('#imageBoard').html("<img  id='imageBalise' src='"+image+"' style='width:"+dimentions[0]+"px; height:"+dimentions[1]+"'/>");
 	$('#imageBoard').show();
 }
