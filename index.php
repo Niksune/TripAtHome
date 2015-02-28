@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<title>Index</title>
+	<title>Harem</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 

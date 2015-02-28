@@ -69,6 +69,8 @@ function mine(mineSize) {
 //Functions called at the end of the mining
 function endMining() {
 
+	$('#miningBoard').hide();
+	
 	stillInMine = 0;
 	
 	$("#littleMineBut").prop('disabled', false);
@@ -79,7 +81,7 @@ function endMining() {
 	
 	totalValue = totalValuer();
 	
-	$("#Messages").html("You recolted a total of : "+totalValue[0]+" vegetables, "+totalValue[1]+" golds and "+totalValue[2]+" opals.");
+	$("#Messages").html("You recolted for a total of : "+totalValue[0]+" vegetables, "+totalValue[1]+" golds and "+totalValue[2]+" opals.");
 	
 	vegetables += totalValue[0];
 	golds += totalValue[1];
@@ -102,6 +104,8 @@ function lookingForVein(mineSize) {
 	//draw for finding a vein
 	if(difficultyDrawD20(stockEyesight,difficultyFinding[mineSize])) 
 	{
+		$('#miningImage').html("<img src='Images/mining.gif'/>");
+		$('#miningStatus').html("Vein found !");
 		console.log("Mining a vein !");
 		stockEyesight = eyesight;
 		stockVein = 0;
@@ -120,8 +124,6 @@ function lookingForVein(mineSize) {
 //Mines the vein (calls mineRessource to effectively getting the ressources)
 //Gets back to looking for ressources in mineRessource
 function mineVein(mineSize) {
-	
-	$('#miningImage').html("<img src='Images/mining.gif'/>");
 	
 	ressourceMined = determineRessource(mineSize);
 	
@@ -154,7 +156,8 @@ function mineRessource(mineSize, ressourceMined) {
 		}
 		else
 		{
-			$("#Messages").html("You mined "+stockVein+" "+ressourceMined+" in this vein !");
+			$('#miningImage').html("<img src='Images/walking.gif'/>");
+			$("#miningStatus").html("You mined "+stockVein+" "+ressourceMined+" in this vein !");
 			console.log("Finished mining "+ressourceMined);
 			setTimeout('lookingForVein("'+mineSize+'")',3000);
 		}

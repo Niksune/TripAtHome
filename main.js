@@ -1,5 +1,5 @@
 //Game
-var game = "TripAtHome";
+var game = "Harem";
 var gameID = 0;
 
 //Character stats
@@ -10,9 +10,9 @@ var dexterity = 10;
 var luck = 1;
 
 // Ressources
-var vegetables = 500;
-var golds = 500;
-var opals = 500;
+var vegetables = 0;
+var golds = 0;
+var opals = 0;
 
 //Ressource incrementation
 var incrementationVegetable = 1;

@@ -31,7 +31,11 @@ function updateShops() {
 		$("#minishop").html('<span id="accessMinishop" ><button id="accessMinishopBut" onclick="accessMinishopFct()">Access MiniShop</button> (cost : '+accessMinishopPrice+' Vegetables)</span><br/>');
 	}
 	else{
-		stockHTML = "<b>MINISHOP</b><br/>";
+		
+		stockHTML = '';
+	
+		if(pickaxeEquiped < 2 || lightEquiped < 2 || trinketEquiped < 2 || gardenBoostsAcquired[0] == 0)
+			stockHTML = "<b>MINISHOP</b><br/>";
 		
 		var i = 1;
 		if(i > pickaxeEquiped) 
