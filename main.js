@@ -118,11 +118,11 @@ function updateRessources () {
 		$('#Opals').show();
 	$('#nbOpal').html(opals);	
 	
-	if(vegetables >= accessMinishopPrice)
+	if(vegetables >= accessMinishopPrice || accessMinishop)
 		$('#minishop').show();
-	if(golds >= 1)
+	if(golds >= 1 || accessDoormart)
 		$('#doormart').show();
-	if(opals >= 1)
+	if(opals >= 1 || accessAlphacrafters)
 		$('#alphacrafters').show();
 
 }
