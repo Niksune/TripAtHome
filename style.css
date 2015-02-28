@@ -49,3 +49,9 @@
 	width: 900px;
 	height: 900px;
 }
+
+#titleScreen
+{
+	font-size: large;
+	font-style: bold;
+}

@@ -1,28 +1,28 @@
 //Global stats for mines
-var difficultyFinding = {"little": 25, "medium": 40, "large": 70};
+var difficultyFinding = {"little": 32, "medium": 70, "large": 120};
 
-var timeMineMultiplier = {"little": 1.5, "medium": 1, "large": 0.75};
+var timeMineMultiplier = {"little": 1.5, "medium": 1.25, "large": 1};
 
 var mineRessources = new Array();
-mineRessources['little'] = {"Silver": 25, "Gold": 40, "Platinum": 48, "Opal": 50};
-mineRessources['medium'] = {"Platinum": 25, "Opal": 40, "Sapphire": 48, "Emerald": 50};
-mineRessources['large'] = {"Sapphire": 25, "Emerald": 40, "Ruby": 48, "Diamond": 50};
+mineRessources['little'] = {"Silver": 32, "Gold": 45, "Platinum": 49, "Opal": 50};
+mineRessources['medium'] = {"Platinum": 32, "Opal": 45, "Sapphire": 49, "Emerald": 50};
+mineRessources['large'] = {"Sapphire": 32, "Emerald": 45, "Ruby": 49, "Diamond": 50};
 
 var priceRessources = new Array();
-priceRessources['Silver'] = new Array(50,0,0);
+priceRessources['Silver'] = new Array(10,0,0);
 priceRessources['Gold'] = new Array(0,1,0);
-priceRessources['Platinum'] = new Array(20,5,0);
+priceRessources['Platinum'] = new Array(5,5,0);
 priceRessources['Opal'] = new Array(0,0,1);
-priceRessources['Sapphire'] = new Array(50,3,5);
+priceRessources['Sapphire'] = new Array(10,5,5);
 priceRessources['Emerald'] = new Array(0,0,10);
 priceRessources['Ruby'] = new Array(50,50,50);
 priceRessources['Diamond'] = new Array(666,666,666);
 
 var difficultyRessources = new Array();
 difficultyRessources['Silver'] = 15;
-difficultyRessources['Gold'] = 21;
-difficultyRessources['Platinum'] = 33;
-difficultyRessources['Opal'] = 40;
+difficultyRessources['Gold'] = 23;
+difficultyRessources['Platinum'] = 35;
+difficultyRessources['Opal'] = 43;
 difficultyRessources['Sapphire'] = 55;
 difficultyRessources['Emerald'] = 70;
 difficultyRessources['Ruby'] = 80;
@@ -103,15 +103,15 @@ function lookingForVein(mineSize) {
 		console.log("Mining a vein !");
 		stockEyesight = eyesight;
 		stockVein = 0;
-		setTimeout('mineVein("'+mineSize+'")',2000);
+		setTimeout('mineVein("'+mineSize+'")',3000);
 	}
 	else if(stillInMine)
 	{
-		stockEyesight += Math.ceil(eyesight/3);
+		stockEyesight += Math.ceil(stockEyesight/3);
 		console.log('stockEyesight = '+stockEyesight);
 		setTimeout(function() {
 			lookingForVein(mineSize);
-		},2000);
+		},3000);
 	}
 }
 
@@ -143,16 +143,16 @@ function mineRessource(mineSize, ressourceMined) {
 		
 		if(difficultyDrawD20(dexterity, stockRessourceDifficulty))
 		{
-			stockRessourceDifficulty += Math.ceil(difficultyRessources[ressourceMined]/3);
+			stockRessourceDifficulty += Math.ceil(stockRessourceDifficulty/3);
 			setTimeout(function() {
 					mineRessource(mineSize, ressourceMined);
-				},1000);
+				},3000);
 		}
 		else
 		{
 			$("#Messages").html("You mined "+stockVein+" "+ressourceMined+" in this vein !");
 			console.log("Finished mining "+ressourceMined);
-			lookingForVein(mineSize);
+			setTimeout('lookingForVein("'+mineSize+'")',3000);
 		}
 	}
 	

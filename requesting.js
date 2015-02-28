@@ -132,9 +132,6 @@ function updateNextBut() {
 		$("#nextBut").html("You've had the whole service ! Come again !");	
 	}
 		
-		
-	
-
 }
 
 //Displays the picture, takes as argument the actual level of request
@@ -144,7 +141,7 @@ function displayPicture(codeTags) {
 	console.log(url);
 	image = getData('',url);
 	$('#imageBoard').html("<img src='"+image+"'/>");
-	//$('#Messages').html("Have fun, you well deserved it... ");
+	$('#Messages').html("Have fun, you well deserved it !");
 }
 
 //Calls the PHP's requestor

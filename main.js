@@ -1,5 +1,6 @@
-//Game ( "Harem" or "TripAtHome" )
-var game = "TripAtHome";
+//Game
+var game = "Harem";
+var gameID = 0;
 
 //Character stats
 var vegetablesEaten = 0;
@@ -9,9 +10,9 @@ var dexterity = 10;
 var luck = 1;
 
 // Ressources
-var vegetables = 500;
-var golds = 500;
-var opals = 500;
+var vegetables = 0;
+var golds = 0;
+var opals = 0;
 
 //Ressource incrementation
 var incrementationVegetable = 1;
@@ -24,32 +25,34 @@ var pickaxeEquiped = 0;
 var lightEquiped = 0;
 var trinketEquiped = 0;
 
-//Mining prices
-var littleMinePrice = 5;
-var mediumMinePrice = 30;
-var largeMinePrice = 50;
-
 //Requesting prices
 var littleRequestPrice = 20;
 var mediumRequestPrice = 20;
 var bigRequestPrice = 20;
 
 //Accessing shops prices
-var accessMinishopPrice = 20;
-var accessDoormartPrice = 20;
-var accessAlphacraftersPrice = 20;
+var accessMinishopPrice = 5;
+var accessDoormartPrice = 5;
+var accessAlphacraftersPrice = 5;
 
 //Mine's prices
 var minePrices = new Array();
-minePrices['little'] = new Array(5,0,0);
-minePrices['medium'] = new Array(0,5,0);
-minePrices['large'] = new Array(0,0,5);
+minePrices['little'] = new Array(10,0,0);
+minePrices['medium'] = new Array(0,10,0);
+minePrices['large'] = new Array(0,0,10);
 
 //Summon main features
 //Print prices
 function main () {
 
+	if($('#gameIDspan').html() != "none") {
+		gameID=$('#gameIDspan').html();
+		console.log(gameID);
+		load();
+	}
+
 	bigUpdate();
+	$('#titleScreen').html(game);
 	$('#littleRequestPrice').html(littleRequestPrice);
 	$('#mediumRequestPrice').html(mediumRequestPrice);
 	$('#bigRequestPrice').html(bigRequestPrice);
@@ -58,14 +61,6 @@ function main () {
 	$('#largeMinePrice').html(minePrices['large'][2]);
 	incrementRessources();
 
-}
-
-//To update all
-function bigUpdate() {
-	updateInventory();
-	updateStats();
-	updateRessources();
-	updateShops();
 }
 
 //Autocall every second, increment vegetables
@@ -93,6 +88,16 @@ function incrementRessources () {
 
 	setTimeout('incrementRessources()',1000);
 
+}
+
+//To update all visuals
+function bigUpdate() {
+
+	updateRessources();
+	updateInventory();
+	updateStats();
+	updateShops();
+	$("#vegetablesEaten").html(vegetablesEaten);;
 }
 
 //Refresh the display of ressources
@@ -182,7 +187,7 @@ function eatVegetables () {
 
 	vegetablesEaten += vegetables;
 	$("#vegetablesEaten").html(vegetablesEaten);
-	endurance = 10 + pickaxeStats[pickaxeEquiped] + Math.ceil(Math.sqrt(vegetablesEaten));
+	endurance = 10 + pickaxeStats[pickaxeEquiped] + Math.floor(Math.sqrt(vegetablesEaten));
 	vegetables = 0;
 	
 	bigUpdate();
