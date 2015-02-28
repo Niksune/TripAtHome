@@ -3,6 +3,7 @@ var choice = "";
 var option1 = "";
 var actualLevel = 0;
 var rerolled = 0;
+var dimentions = new Array();
 
 //Main Function
 //RequestType is 1, 2 or 3
@@ -58,7 +59,14 @@ function startRequest() {
 //Ending function
 function endRequesting() {
 
-	$("#requestBoard").hide();
+	var buttons = 'After all that work, you may want a little treat ?<br />';
+	buttons += '<div id="requestButtons">';
+	buttons += '<span id="buyLittleRequestSpan" style="display:none;" ><button id="buyLittleRequestBut" onclick="buyRequest(1)">Buy a Little Request</button> (cost : <span id="littleRequestPrice">'+littleRequestPrice+'</span> Vegetables)</span><br/>';
+	buttons += '<span id="buyMediumRequestSpan" style="display:none;" ><button id="buyMediumRequestBut" onclick="buyRequest(2)">Buy a Medium Request</button> (cost : <span id="mediumRequestPrice">'+mediumRequestPrice+'</span> Gold Coins)</span><br/>';
+	buttons += '<span id="buyBigRequestSpan" style="display:none;" ><button id="buyBigRequestBut" onclick="buyRequest(3)">Buy a Big Request</button> (cost : <span id="bigRequestPrice">'+bigRequestPrice+'</span> Opals)</span><br/>';
+	buttons += '</div>';
+
+	$("#requestBoard").html(buttons);
 
 	$("#buyLittleRequestBut").prop('disabled', false);
 	$("#buyMediumRequestBut").prop('disabled', false);
@@ -101,9 +109,9 @@ function updateNextBut() {
 	if(game=="TripAtHome"){
 		switch(actualLevel){
 			case 1:messageNext = "Maybe some faith building ?";break;
-			case 2:messageNext = "Gimme a few monuments";break;
+			case 2:messageNext = "Gimme a few statues or monuments";break;
 			case 3:messageNext = "I want some street art";break;
-			case 4:messageNext = "And to finish : a party";break;
+			case 4:messageNext = "And to finish : a festival";break;
 		}
 	}
 	else{
@@ -120,7 +128,7 @@ function updateNextBut() {
 	if(actualLevel==0 && game=="TripAtHome")
 		return "Show me buildings";
 	else if (actualLevel==0 && game!="TripAtHome")
-		return "Show me more";
+		return "Show me more private";
 		
 	console.log("requestTypeGlobal :"+requestTypeGlobal+" actualLevel : "+actualLevel);
 		
@@ -140,7 +148,12 @@ function displayPicture(codeTags) {
 	url = game+"/requeteur.php?codeTags="+codeTags+"&choice="+choice+"&option1="+option1;
 	console.log(url);
 	image = getData('',url);
-	$('#imageBoard').html("<img src='"+image+"'/>");
+	$('#imageBoard').show();
+	$('#imageBoard').css('height','auto');
+	$('#imageBoard').css('width','auto');
+	
+	$('#imageBoard').html("<img id='imageBalise' src='"+image+"' onload='imageFunction()'/>");
+
 	$('#Messages').html("Have fun, you well deserved it !");
 }
 
@@ -152,4 +165,28 @@ function getData(param, page) {
 		XhrObj.send(param);
 		if (XhrObj.readyState == 4 && XhrObj.status == 200) return XhrObj.responseText;
 		else alert("erreur ajax :"+XhrObj.readyState+","+XhrObj.status);
+}
+
+//Find the right proportion for the picture
+function scaleSize(maxW, maxH, currW, currH){
+
+	var ratio = currH / currW;
+
+	if(currW >= maxW && ratio <= 1){
+		currW = maxW;
+		currH = currW * ratio;
+	} else if(currH >= maxH){
+		currH = maxH;
+		currW = currH / ratio;
+	}
+
+	return [currW,currH];
+}
+
+function imageFunction(){
+	dimentions[0]=$('#imageBoard').width();
+	dimentions[1]=$('#imageBoard').height();
+	dimentions = scaleSize(1000,750,dimentions[0],dimentions[1]);
+	$('#imageBoard').html("<img  id='imageBalise' src='"+image+"' style='width:"+dimentions[0]+"px; height:"+dimentions[1]+"'/>");
+	$('#imageBoard').show();
 }

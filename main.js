@@ -1,5 +1,5 @@
 //Game
-var game = "Harem";
+var game = "TripAtHome";
 var gameID = 0;
 
 //Character stats
@@ -10,9 +10,9 @@ var dexterity = 10;
 var luck = 1;
 
 // Ressources
-var vegetables = 0;
-var golds = 0;
-var opals = 0;
+var vegetables = 500;
+var golds = 500;
+var opals = 500;
 
 //Ressource incrementation
 var incrementationVegetable = 1;
@@ -73,12 +73,18 @@ function incrementRessources () {
 	if(vegetables >= littleRequestPrice)
 	{
 		$('#buyLittleRequestSpan').show();
-		$('#imageBoard').show();
+		$('#requestBoard').show();
 	}
 	if(golds >= mediumRequestPrice)
+	{
 		$('#buyMediumRequestSpan').show();
+		$('#requestBoard').show();
+	}
 	if(opals >= bigRequestPrice)
+	{
 		$('#buyBigRequestSpan').show();
+		$('#requestBoard').show();
+	}
 	if(vegetables >= minePrices['little'][0])
 		$('#littleMineSpan').show();
 	if(golds >= minePrices['medium'][1])

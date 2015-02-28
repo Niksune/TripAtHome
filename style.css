@@ -1,8 +1,15 @@
-#board 
+body 
+{
+    padding-left: 100px;
+	padding-top: 20px;
+}
+	
+#ressourcesBoard 
 {
 	border-style: solid;
 	border-width: 1px;
 	max-width: 150px;
+	margin-top: 20px;
 }
 
 #messageBoard
@@ -21,6 +28,8 @@
     margin-bottom: 20px;
     margin-left: 20px;
     margin-right: 20px;
+	width: 500px;
+	min-height: 150px;
 }
 
 .itemName
@@ -43,15 +52,53 @@
 
 #requestBoard
 {
-	border-style: solid;
-	border-width: 1px;
 	float: right;
-	width: 900px;
-	height: 900px;
+	margin-right: 150px;
 }
 
 #titleScreen
 {
-	font-size: large;
-	font-style: bold;
+	position:absolute;
+	left:50%;
+	margin-left:-50px; /* half of the div*/  
+	font-size: x-large;
+	font-weight: bold;
+}
+
+#save
+{
+	padding-top:50px;
+}
+
+#stats
+{
+	float:left;
+	margin-right:100px;
+}
+
+#actions
+{
+	margin-top:50px;
+}
+
+#miningImage
+{
+	float:left;
+}
+
+button
+{
+	width:175px;
+	text-align: center;
+}
+
+#saveBut
+{
+	width:100px;
+	text-align: center;
+}
+
+#requestButtons
+{
+	float:right;
 }

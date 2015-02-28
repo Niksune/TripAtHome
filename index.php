@@ -15,7 +15,15 @@
 		<span id="gameIDspan" style="display:none;"><?php if(isset($_GET['gameID'])) { echo($_GET['gameID']); } else { echo("none"); } ?></span>
 		<span id="loadURL"></span>
 	</div>
-	<div id="board">
+	<div id="requestBoard" style="display:none;">
+		<div id="requestButtons">
+			After all that work, you may want a little treat ?<br />
+			<span id="buyLittleRequestSpan" style="display:none;" ><button id="buyLittleRequestBut" onclick="buyRequest(1)">Buy a Little Request</button> (cost : <span id="littleRequestPrice">0</span> Vegetables)</span><br/>
+			<span id="buyMediumRequestSpan" style="display:none;" ><button id="buyMediumRequestBut" onclick="buyRequest(2)">Buy a Medium Request</button> (cost : <span id="mediumRequestPrice">0</span> Gold Coins)</span><br/>
+			<span id="buyBigRequestSpan" style="display:none;" ><button id="buyBigRequestBut" onclick="buyRequest(3)">Buy a Big Request</button> (cost : <span id="bigRequestPrice">0</span> Opals)</span><br/>
+		</div>
+	</div>
+	<div id="ressourcesBoard">
 		<div id="Vegetables">Vegetables : <span id="nbVegetable">0</span></div>
 		<div id="Golds" style="display:none;">Gold Coins : <span id="nbGold">0</span></div>
 		<div id="Opals" style="display:none;">Opals : <span id="nbOpal">0</span></div>
@@ -24,7 +32,8 @@
 		<span id="Messages">You're doing all good.</span>
 	</div>
 	<div id="miningBoard" style="display:none;">
-		<span id="miningStatus">Not Mining</span>
+		<div id="miningImage"></div>
+		<div id="miningStatus">Not Mining</div>
 		<span id="timeLeftMining"></span>
 		<div id="ressourcesFound"></div>
 	</div>
@@ -39,16 +48,11 @@
 		<div id="Light">Light : <span id="spanLight"></span></div>
 		<div id="Trinket">Trinket : <span id="spanTrinket"></span></div>
 	</div>
-	<div id="requestBoard" style="display:none;">
-	</div>
 	<div id="actions">
-		<span id="eatVegetablesSpan" ><button id="eatVegetablesBut" onclick="eatVegetables()">Eat your Vegetables</button> (Vegetables eaten : <span id="vegetablesEaten">0</span>)</span><br/>
-		<span id="buyLittleRequestSpan" style="display:none;" ><button id="buyLittleRequestBut" onclick="buyRequest(1)">Buy a Little Request</button> (cost : <span id="littleRequestPrice">0</span> Vegetables)</span><br/>
-		<span id="buyMediumRequestSpan" style="display:none;" ><button id="buyMediumRequestBut" onclick="buyRequest(2)">Buy a Medium Request</button> (cost : <span id="mediumRequestPrice">0</span> Gold Coins)</span><br/>
-		<span id="buyBigRequestSpan" style="display:none;" ><button id="buyBigRequestBut" onclick="buyRequest(3)">Buy a Big Request</button> (cost : <span id="bigRequestPrice">0</span> Opals)</span><br/>
+		<span id="eatVegetablesSpan" ><button id="eatVegetablesBut" onclick="eatVegetables()">Eat your Vegetables</button> (Vegetables eaten : <span id="vegetablesEaten">0</span>)</span><br/><br/>
 		<span id="littleMineSpan" style="display:none;" ><button id="littleMineBut" onclick="buyMine('little')">Mine in Little mine</button> (cost : <span id="littleMinePrice">0</span> Vegetables)</span><br/>
 		<span id="mediumMineSpan" style="display:none;" ><button id="mediumMineBut" onclick="buyMine('medium')">Mine in Medium mine</button> (cost : <span id="mediumMinePrice">0</span> Gold Coins)</span><br/>
-		<span id="largeMineSpan" style="display:none;" ><button id="largeMineBut" onclick="buyMine('large')">Mine in Large mine</button> (cost : <span id="largeMinePrice">0</span> Opals)</span>
+		<span id="largeMineSpan" style="display:none;" ><button id="largeMineBut" onclick="buyMine('large')">Mine in Large mine</button> (cost : <span id="largeMinePrice">0</span> Opals)</span><br/><br/>
 	</div>
 	<div id="shops">
 		<div id="minishop" style="display:none;"></div>

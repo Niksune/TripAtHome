@@ -50,10 +50,10 @@
 	$tags = [
 				[$city, $dayNight, "street"],
 				[$city, $dayNight, "building"],
-				[$city, $dayNight, "church"],
-				[$city, $dayNight, "monument"],
-				[$city, $dayNight, "streetart"],
-				[$city, $dayNight, "party"]
+				[$city, $dayNight, "(church OR temple)"],
+				[$city, $dayNight, "(monument OR statue)"],
+				[$city, $dayNight, "(streetart OR tag)"],
+				[$city, $dayNight, "(concert OR festival)"]
 			];
 		
 	

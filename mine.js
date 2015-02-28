@@ -41,6 +41,8 @@ function mine(mineSize) {
 
 	stillInMine = 1;
 	
+	$('#miningImage').html("<img src='Images/walking.gif'/>");
+	
 	$("#littleMineBut").prop('disabled', true);
 	$("#mediumMineBut").prop('disabled', true);
 	$("#largeMineBut").prop('disabled', true);
@@ -118,6 +120,8 @@ function lookingForVein(mineSize) {
 //Mines the vein (calls mineRessource to effectively getting the ressources)
 //Gets back to looking for ressources in mineRessource
 function mineVein(mineSize) {
+	
+	$('#miningImage').html("<img src='Images/mining.gif'/>");
 	
 	ressourceMined = determineRessource(mineSize);
 	
