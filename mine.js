@@ -81,7 +81,7 @@ function endMining() {
 	
 	totalValue = totalValuer();
 	
-	$("#Messages").html("You recolted for a total of : "+totalValue[0]+" vegetables, "+totalValue[1]+" golds and "+totalValue[2]+" opals.");
+	$("#Messages").html("You mined for a total of : "+totalValue[0]+" vegetables, "+totalValue[1]+" golds and "+totalValue[2]+" opals.");
 	
 	vegetables += totalValue[0];
 	golds += totalValue[1];
