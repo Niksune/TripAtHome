@@ -1,6 +1,6 @@
 # TripAtHome #
 
-TripAtHome is time management web game. The player can farm, mine and improve his equipment. 
+TripAtHome is time management web game. The player can farm, mine and improve his equipment.
 After earning ressources, the player is rewarded with virtual trips in the most beautiful cities in the world (pictures dynamically extracted from Flick's API).
 
 ### Team ###
@@ -15,4 +15,4 @@ After earning ressources, the player is rewarded with virtual trips in the most 
 
 ### Contribution guidelines ###
 
-- Don't hesitate to ask Nicolas - ElNix - Benoit at nico.benoit@gmail.com if you want to contribute ! 
+- Don't hesitate to ask Nicolas - ElNix - Benoit at nico.benoit@gmail.com if you want to contribute !
